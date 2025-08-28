@@ -71,14 +71,26 @@ heading.addEventListener("click", () => {
     heading.classList.toggle("active");
 });
 
-// 4) Change description text
+// 4) Change description text (now cycles through fun facts)
 const desc = document.getElementById("description");
 const changeBtn = document.getElementById("changeText");
+
+const descriptions = [
+    "This is my safe space, don't make it weird 😎.",
+    "I love coding and writing, and I enjoy making interactive web pages!",
+    "Fun fact: I can code while eating a tropical fruit salad 🍍🥭.",
+    "When I’m not coding, I’m probably daydreaming or writing stories ✍️.",
+    "Blue is my favorite color, it keeps me calm 💙."
+];
+
+let currentIndex = 0;
+
 changeBtn.addEventListener("click", () => {
-    desc.textContent = "I love coding and writing, and I enjoy making interactive web pages!";
+    currentIndex = (currentIndex + 1) % descriptions.length;
+    desc.textContent = descriptions[currentIndex];
 });
 
-// BONUS: Add new hobby on button click
+// 5) Add new hobby on button click
 const addBtn = document.getElementById("addHobby");
 addBtn.addEventListener("click", () => {
     const newHobby = prompt("Enter a new hobby:");
@@ -87,4 +99,11 @@ addBtn.addEventListener("click", () => {
         li.textContent = newHobby;
         hobbyList.appendChild(li);
     }
+});
+
+// 6) Change background color
+const bgBtn = document.getElementById("changeBG");
+bgBtn.addEventListener("click", () => {
+    document.body.style.backgroundColor = 
+        document.body.style.backgroundColor === "lightblue" ? "white" : "lightblue";
 });
